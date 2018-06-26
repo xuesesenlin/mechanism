@@ -1,7 +1,7 @@
 package org.ld.mechanism.admin.roleAccount.service.impl;
 
-import org.ld.bt2.jurisdiction.roleAccount.jpa.RoleAccountJpa;
-import org.ld.bt2.jurisdiction.roleAccount.model.RoleAccountModel;
+import org.ld.mechanism.admin.roleAccount.jpa.RoleAccountJpa;
+import org.ld.mechanism.admin.roleAccount.model.RoleAccountModel;
 import org.ld.mechanism.admin.roleAccount.service.RoleAccountService;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;

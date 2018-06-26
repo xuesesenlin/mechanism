@@ -1,8 +1,8 @@
 package org.ld.mechanism.admin.jurisdiction.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.ld.bt2.jurisdiction.jurisdiction.jpa.JurisdictionJpa;
-import org.ld.bt2.jurisdiction.jurisdiction.model.JurisdictionModel;
+import org.ld.mechanism.admin.jurisdiction.jpa.JurisdictionJpa;
+import org.ld.mechanism.admin.jurisdiction.model.JurisdictionModel;
 import org.ld.mechanism.admin.jurisdiction.service.JurisdictionService;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;

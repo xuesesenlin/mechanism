@@ -1,6 +1,6 @@
 package org.ld.mechanism.admin.role.service;
 
-import org.ld.bt2.jurisdiction.role.model.RoleModel;
+import org.ld.mechanism.admin.role.model.RoleModel;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.data.domain.Page;
 

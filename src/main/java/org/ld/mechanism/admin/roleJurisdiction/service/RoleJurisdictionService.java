@@ -1,6 +1,6 @@
 package org.ld.mechanism.admin.roleJurisdiction.service;
 
-import org.ld.bt2.jurisdiction.roleJurisdiction.model.RoleJurisdictionModel;
+import org.ld.mechanism.admin.roleJurisdiction.model.RoleJurisdictionModel;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 
 import java.util.List;

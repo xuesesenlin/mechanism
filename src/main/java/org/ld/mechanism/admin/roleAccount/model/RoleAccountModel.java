@@ -1,4 +1,4 @@
-package org.ld.bt2.jurisdiction.roleAccount.model;
+package org.ld.mechanism.admin.roleAccount.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;

@@ -1,6 +1,6 @@
-package org.ld.bt2.jurisdiction.roleAccount.jpa;
+package org.ld.mechanism.admin.roleAccount.jpa;
 
-import org.ld.bt2.jurisdiction.roleAccount.model.RoleAccountModel;
+import org.ld.mechanism.admin.roleAccount.model.RoleAccountModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

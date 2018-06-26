@@ -1,6 +1,6 @@
-package org.ld.bt2.jurisdiction.jurisdiction.jpa;
+package org.ld.mechanism.admin.jurisdiction.jpa;
 
-import org.ld.bt2.jurisdiction.jurisdiction.model.JurisdictionModel;
+import org.ld.mechanism.admin.jurisdiction.model.JurisdictionModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

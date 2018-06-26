@@ -1,6 +1,6 @@
 package org.ld.mechanism.admin.roleAccount.service;
 
-import org.ld.bt2.jurisdiction.roleAccount.model.RoleAccountModel;
+import org.ld.mechanism.admin.roleAccount.model.RoleAccountModel;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 
 import java.util.List;

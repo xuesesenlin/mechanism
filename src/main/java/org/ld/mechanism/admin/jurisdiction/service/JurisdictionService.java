@@ -1,6 +1,6 @@
 package org.ld.mechanism.admin.jurisdiction.service;
 
-import org.ld.bt2.jurisdiction.jurisdiction.model.JurisdictionModel;
+import org.ld.mechanism.admin.jurisdiction.model.JurisdictionModel;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.data.domain.Page;
 

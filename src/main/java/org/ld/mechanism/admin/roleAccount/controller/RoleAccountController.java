@@ -1,6 +1,6 @@
 package org.ld.mechanism.admin.roleAccount.controller;
 
-import org.ld.bt2.jurisdiction.roleAccount.model.RoleAccountModel;
+import org.ld.mechanism.admin.roleAccount.model.RoleAccountModel;
 import org.ld.mechanism.admin.roleAccount.service.RoleAccountService;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
