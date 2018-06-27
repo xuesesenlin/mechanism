@@ -87,7 +87,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public ResponseResult<Page<AccountModel>> page(int pageNow, int pageSize, AccountModel model) {
         List<Sort.Order> orders = new ArrayList<>();
-        orders.add(new Sort.Order(Sort.Direction.DESC, "registerTime"));//排序信息
+//        orders.add(new Sort.Order(Sort.Direction.DESC, "registerTime"));//排序信息
         orders.add(new Sort.Order(Sort.Direction.ASC, "account"));//排序信息
         Specification<AccountModel> spec = queryTj(model);
         PageRequest pageRequest = PageRequest.of(pageNow, pageSize, Sort.by(orders));

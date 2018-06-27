@@ -2,6 +2,7 @@ package org.ld.mechanism.config.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.ld.mechanism.util.responseResult.ResponseResult;
+import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -51,6 +52,27 @@ public class GlobalExceptionHandler {
         ResponseResult<String> result = new ResponseResult<>();
         result.setSuccess(false);
         result.setMessage("数据转换错误，请确认日期，数字等格式是否正确");
+        return result;
+    }
+    /**
+     *
+     * @param request
+     * @param exception
+     * @return
+     * @throws Exception
+     */
+    @ExceptionHandler(value = PropertyReferenceException.class)
+    public ResponseResult<String> propertyReferenceException(HttpServletRequest request,
+                                                 Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        ResponseResult<String> result = new ResponseResult<>();
+        result.setSuccess(false);
+        result.setMessage("当前实体类中不存在该属性");
         return result;
     }
 
