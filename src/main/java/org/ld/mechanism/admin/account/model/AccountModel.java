@@ -1,6 +1,5 @@
 package org.ld.mechanism.admin.account.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.GenericGenerator;
@@ -34,9 +33,9 @@ public class AccountModel implements Serializable {
     //    密码
     @NotBlank(message = "密码不能为空")
     @Size(min = 6, max = 30, message = "密码长度为6-30位")
-    @Pattern(regexp = "/^(?![a-zA-z]+$)(?!\\d+$)(?![!@#$%^&*]+$)(?![a-zA-z\\d]+$)(?![a-zA-z!@#$%^&*]+$)(?![\\d!@#$%^&*]+$)[a-zA-Z\\d!@#$%^&*]+$/",
-            message = "密码需包含字母和数字以及!@#$%^&*")
-    @JsonIgnore//生成json时忽略此字段
+    @Pattern(regexp = "^\\w+$",
+            message = "密码需包含字母和数字以及_")
+//    @JsonIgnore//生成json时忽略此字段
     @Column(name = "password", length = 200)
     private String password;
     //    类型 1:超级管理员 2：管理员 3：普通用户
@@ -48,7 +47,7 @@ public class AccountModel implements Serializable {
     private String type = "3";
     //    是否允许登录 Y：是 N：否
     @NotBlank(message = "是否允许登录不能为空")
-    @Pattern(regexp = "/^[Y]||[N]+$/", message = "是否允许登录可选值为 'Y' or 'N'")
+    @Pattern(regexp = "Y|N", message = "是否允许登录可选值为 'Y' or 'N'")
     @Size(max = 1, message = "是否允许登录长度为1")
     @Column(name = "is_login", length = 10)
     private String isLogin = "N";
