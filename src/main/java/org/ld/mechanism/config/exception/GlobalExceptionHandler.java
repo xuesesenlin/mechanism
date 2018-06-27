@@ -54,8 +54,8 @@ public class GlobalExceptionHandler {
         result.setMessage("数据转换错误，请确认日期，数字等格式是否正确");
         return result;
     }
+
     /**
-     *
      * @param request
      * @param exception
      * @return
@@ -63,7 +63,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = PropertyReferenceException.class)
     public ResponseResult<String> propertyReferenceException(HttpServletRequest request,
-                                                 Exception exception) throws Exception {
+                                                             Exception exception) throws Exception {
         exception.printStackTrace();
         log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
         log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
