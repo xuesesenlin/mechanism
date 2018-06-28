@@ -10,7 +10,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
  * @author ld
  * @name
  * @table
- * @remarks
+ * @remarks sha256_digest(" any message ")
  */
 public class JWTUtil {
 

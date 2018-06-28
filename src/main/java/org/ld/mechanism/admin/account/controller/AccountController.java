@@ -1,6 +1,9 @@
 package org.ld.mechanism.admin.account.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.ld.mechanism.admin.account.model.AccountModel;
 import org.ld.mechanism.admin.account.service.AccountService;
 import org.ld.mechanism.util.responseResult.ResponseResult;
@@ -29,8 +32,8 @@ public class AccountController {
     @Autowired
     private AccountService service;
 
-    //    @RequiresAuthentication
-//    @RequiresPermissions(value = {"account:page"}, logical = Logical.AND)
+    @RequiresAuthentication
+    @RequiresPermissions(value = {"account:page"}, logical = Logical.AND)
     @RequestMapping(value = "/account/{pageNow}", method = RequestMethod.GET)
     public ResponseResult<Page<AccountModel>> page(@PathVariable("pageNow") int pageNow,
                                                    @RequestParam(value = "account", required = false) String account) {
@@ -40,8 +43,8 @@ public class AccountController {
         return service.page(pageNow, pageSize, model);
     }
 
-    //    @RequiresAuthentication
-//    @RequiresPermissions(value = {"account:save"}, logical = Logical.AND)
+    @RequiresAuthentication
+    @RequiresPermissions(value = {"account:save"}, logical = Logical.AND)
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     public ResponseResult<AccountModel> save(@Valid @ModelAttribute("form") AccountModel model,
                                              BindingResult result) {
@@ -50,8 +53,8 @@ public class AccountController {
         return service.save(model);
     }
 
-    //    @RequiresAuthentication
-//    @RequiresPermissions(value = {"account:delete"}, logical = Logical.AND)
+    @RequiresAuthentication
+    @RequiresPermissions(value = {"account:delete"}, logical = Logical.AND)
     @RequestMapping(value = "/account/{uuid}", method = RequestMethod.DELETE)
     public ResponseResult<AccountModel> delete(@PathVariable("uuid") String uuid) {
         return service.delete(uuid);
