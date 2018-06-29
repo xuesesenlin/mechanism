@@ -30,8 +30,13 @@ public class RoleModel implements Serializable {
     private String name;
 
     //    备注
+    @Size(max = 200, message = "备注最大长度为200")
     @Column(name = "remarks", length = 200)
     private String remarks;
+
+    //    乐观锁
+    @Version
+    private int version;
 
     //    fetch=FetchType.LAZY 懒加载
 //    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
@@ -62,14 +67,23 @@ public class RoleModel implements Serializable {
         this.remarks = remarks;
     }
 
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
     public RoleModel() {
         super();
     }
 
-    public RoleModel(String uuid, @NotBlank(message = "角色名称不能为空") @Size(max = 200, message = "角色名称最大长度为200") String name, String remarks) {
+    public RoleModel(String uuid, @NotBlank(message = "角色名称不能为空") @Size(max = 200, message = "角色名称最大长度为200") String name, @Size(max = 200, message = "备注最大长度为200") String remarks, int version) {
         this.uuid = uuid;
         this.name = name;
         this.remarks = remarks;
+        this.version = version;
     }
 
     @Override
@@ -78,6 +92,7 @@ public class RoleModel implements Serializable {
                 "uuid='" + uuid + '\'' +
                 ", name='" + name + '\'' +
                 ", remarks='" + remarks + '\'' +
+                ", version=" + version +
                 '}';
     }
 }

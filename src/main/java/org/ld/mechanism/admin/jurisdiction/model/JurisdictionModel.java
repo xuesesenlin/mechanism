@@ -42,6 +42,10 @@ public class JurisdictionModel implements Serializable {
     @Column(name = "type", length = 10)
     private String type;
 
+    //    乐观锁
+    @Version
+    private int version;
+
     public String getUuid() {
         return uuid;
     }
@@ -74,15 +78,24 @@ public class JurisdictionModel implements Serializable {
         this.type = type;
     }
 
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
     public JurisdictionModel() {
         super();
     }
 
-    public JurisdictionModel(String uuid, @NotBlank(message = "权限名称不能为空") String name, @NotBlank(message = "权限标识不能为空") String identification, @NotBlank(message = "请指定权限类型") @Min(value = 1, message = "最小限制1") String type) {
+    public JurisdictionModel(String uuid, @NotBlank(message = "权限名称不能为空") @Size(min = 1, max = 100, message = "权限名称最大长度为100位") String name, @NotBlank(message = "权限标识不能为空") String identification, @NotBlank(message = "请指定权限类型") @Min(value = 1, message = "最小限制1") String type, int version) {
         this.uuid = uuid;
         this.name = name;
         this.identification = identification;
         this.type = type;
+        this.version = version;
     }
 
     @Override
@@ -92,6 +105,7 @@ public class JurisdictionModel implements Serializable {
                 ", name='" + name + '\'' +
                 ", identification='" + identification + '\'' +
                 ", type='" + type + '\'' +
+                ", version=" + version +
                 '}';
     }
 }

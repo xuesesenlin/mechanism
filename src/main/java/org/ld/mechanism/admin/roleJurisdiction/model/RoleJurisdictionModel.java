@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -22,11 +23,17 @@ public class RoleJurisdictionModel implements Serializable {
     @GeneratedValue(generator = "system-uuid")
     private String uuid;
 
+    @NotBlank(message = "角色不能为空")
     @Column(name = "role", length = 200)
     private String role;
 
+    @NotBlank(message = "权限不能为空")
     @Column(name = "jurisdiction", length = 200)
     private String jurisdiction;
+
+    //    乐观锁
+    @Version
+    private int version;
 
     public String getUuid() {
         return uuid;
@@ -52,14 +59,23 @@ public class RoleJurisdictionModel implements Serializable {
         this.jurisdiction = jurisdiction;
     }
 
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
     public RoleJurisdictionModel() {
         super();
     }
 
-    public RoleJurisdictionModel(String uuid, String role, String jurisdiction) {
+    public RoleJurisdictionModel(String uuid, @NotBlank(message = "角色不能为空") String role, @NotBlank(message = "权限不能为空") String jurisdiction, int version) {
         this.uuid = uuid;
         this.role = role;
         this.jurisdiction = jurisdiction;
+        this.version = version;
     }
 
     @Override
@@ -68,6 +84,7 @@ public class RoleJurisdictionModel implements Serializable {
                 "uuid='" + uuid + '\'' +
                 ", role='" + role + '\'' +
                 ", jurisdiction='" + jurisdiction + '\'' +
+                ", version=" + version +
                 '}';
     }
 }

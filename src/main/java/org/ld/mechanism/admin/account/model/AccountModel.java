@@ -51,13 +51,13 @@ public class AccountModel implements Serializable {
     @Size(max = 1, message = "是否允许登录长度为1")
     @Column(name = "is_login", length = 10)
     private String isLogin = "N";
-    //    最新资料版本
-    @Column(name = "version", length = 100)
-    private String version;
     //    标记字段
     @NotBlank(message = "标记字段不能为空")
     @Column(name = "flag", length = 10)
     private String flag = "0";
+    //    乐观锁
+    @Version
+    private int version;
 
     public String getUuid() {
         return uuid;
@@ -99,14 +99,6 @@ public class AccountModel implements Serializable {
         this.isLogin = isLogin;
     }
 
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
     public String getFlag() {
         return flag;
     }
@@ -115,18 +107,34 @@ public class AccountModel implements Serializable {
         this.flag = flag;
     }
 
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
     public AccountModel() {
         super();
     }
 
-    public AccountModel(String uuid, String account, String password, String type, String isLogin, String version, String flag) {
+    public AccountModel(String uuid,
+                        @NotBlank(message = "账户不能为空")
+                        @Email(message = "不是标准的email格式")
+                        @Size(min = 6, max = 100, message = "账户长度为6-100位")
+                                String account,
+                        @NotBlank(message = "密码不能为空")
+                        @Size(min = 6, max = 30, message = "密码长度为6-30位")
+                        @Pattern(regexp = "^\\w+$",
+                                message = "密码需包含字母和数字以及_") String password, @NotBlank(message = "账户类型不能为空") @Min(value = 1, message = "账户类型不能小于1") @Max(value = 3, message = "账户类型不能大于3") @Size(max = 1, message = "账户类型长度为1") String type, @NotBlank(message = "是否允许登录不能为空") @Pattern(regexp = "Y|N", message = "是否允许登录可选值为 'Y' or 'N'") @Size(max = 1, message = "是否允许登录长度为1") String isLogin, @NotBlank(message = "标记字段不能为空") String flag, int version) {
         this.uuid = uuid;
         this.account = account;
         this.password = password;
         this.type = type;
         this.isLogin = isLogin;
-        this.version = version;
         this.flag = flag;
+        this.version = version;
     }
 
     @Override
