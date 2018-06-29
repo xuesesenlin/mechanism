@@ -45,6 +45,14 @@ spring:
   #其他的使用classpath指的是系统环境变量
   resources:
     static-locations: classpath:/static/,classpath:/public/,file:${file.filePath}
+#    缓存
+#可选值
+#simple: 基于ConcurrentHashMap实现的缓存，适合单机或者开发环境使用。
+#none：关闭缓存，比如开发阶段先确保功能正确，可以先禁止使用缓存
+#redis：使用redis作为缓存，你还需要在pom里增加redis依赖。本章缓存将重点介绍redis缓存以及扩展redis实现一二级缓存
+#Generic，用户自定义缓存实现，用户需要实现一个org.springframework.cache.CacheManager的实现
+  cache:
+    type: simple
 #自定义分页条数
 page:
   pageSize: 15

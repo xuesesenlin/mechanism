@@ -38,7 +38,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountJpa jpa;
 
     //    缓存更新
-    @CachePut(cacheNames = "account")
+    @CachePut(value = "account", key = "#account.uuid")
     @Transactional
     @Override
     public ResponseResult<AccountModel> save(AccountModel model) {
@@ -51,7 +51,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     //    缓存删除
-    @CacheEvict(cacheNames = "account")
+    @CacheEvict(value = "account", key = "#account.uuid")
     @Transactional
     @Override
     public ResponseResult<AccountModel> delete(String uuid) {
@@ -60,7 +60,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     //    缓存更新
-    @CachePut(cacheNames = "account")
+    @CachePut(value = "account", key = "#account.uuid")
     @Transactional
     @Override
     public ResponseResult<AccountModel> update(AccountModel model) {
@@ -72,7 +72,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     //    缓存读取
-    @Cacheable(cacheNames = "account")
+    @Cacheable(value = "account")
     @Override
     public ResponseResult<AccountModel> findByAccount(String account) {
         List<AccountModel> list = jpa.findByAccount(account);
@@ -82,8 +82,8 @@ public class AccountServiceImpl implements AccountService {
             return new ResponseResult<>(false, "未查询到数据", null);
     }
 
-    //    缓存读取
-    @Cacheable(cacheNames = "account")
+    //    缓存
+    @Cacheable(value = "account")
     @Override
     public ResponseResult<Page<AccountModel>> page(int pageNow, int pageSize, AccountModel model) {
         List<Sort.Order> orders = new ArrayList<>();

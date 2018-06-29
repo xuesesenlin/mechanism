@@ -1,6 +1,7 @@
 package org.ld.mechanism.config.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.AuthorizationException;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -52,6 +53,21 @@ public class GlobalExceptionHandler {
         ResponseResult<String> result = new ResponseResult<>();
         result.setSuccess(false);
         result.setMessage("数据转换错误，请确认日期，数字等格式是否正确");
+        return result;
+    }
+
+    @ExceptionHandler(value = AuthorizationException.class)
+    public ResponseResult<String> authorizationException(HttpServletRequest request,
+                                                         Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        ResponseResult<String> result = new ResponseResult<>();
+        result.setSuccess(false);
+        result.setMessage("权限不足或未登录");
         return result;
     }
 
