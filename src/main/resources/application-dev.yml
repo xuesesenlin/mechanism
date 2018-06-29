@@ -16,7 +16,7 @@ spring:
 #jpa相关配置
   jpa:
     hibernate:
-      ddl-auto: update  # 第一次简表create  后面用update
+      ddl-auto: update  # 第一次简表create  后面用update 实践证明第一次也可以update
     show-sql: true
 #     控制台彩色输出
   output:
