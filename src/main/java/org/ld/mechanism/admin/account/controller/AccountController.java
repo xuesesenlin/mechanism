@@ -32,8 +32,8 @@ public class AccountController {
     @Autowired
     private AccountService service;
 
-    @RequiresAuthentication
-    @RequiresPermissions(value = {"account:page"}, logical = Logical.AND)
+//    @RequiresAuthentication
+//    @RequiresPermissions(value = {"account:page"}, logical = Logical.AND)
     @RequestMapping(value = "/account/{pageNow}", method = RequestMethod.GET)
     public ResponseResult<Page<AccountModel>> page(@PathVariable("pageNow") int pageNow,
                                                    @RequestParam(value = "account", required = false) String account) {

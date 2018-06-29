@@ -38,7 +38,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountJpa jpa;
 
     //    缓存更新
-    @CachePut(value = "account", key = "#account.uuid")
+    @CachePut(value = "account", key = "#model.uuid")
     @Transactional
     @Override
     public ResponseResult<AccountModel> save(AccountModel model) {
@@ -51,7 +51,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     //    缓存删除
-    @CacheEvict(value = "account", key = "#account.uuid")
+    @CacheEvict(value = "account", key = "#uuid")
     @Transactional
     @Override
     public ResponseResult<AccountModel> delete(String uuid) {
@@ -60,7 +60,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     //    缓存更新
-    @CachePut(value = "account", key = "#account.uuid")
+    @CachePut(value = "account", key = "#model.uuid")
     @Transactional
     @Override
     public ResponseResult<AccountModel> update(AccountModel model) {
