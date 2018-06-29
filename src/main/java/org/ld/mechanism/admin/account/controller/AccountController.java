@@ -32,8 +32,8 @@ public class AccountController {
     @Autowired
     private AccountService service;
 
-    //    @RequiresAuthentication
-//    @RequiresPermissions(value = {"account:page"}, logical = Logical.AND)
+    @RequiresAuthentication
+    @RequiresPermissions(value = {"account:page"}, logical = Logical.AND)
     @RequestMapping(value = "/account/{pageNow}", method = RequestMethod.GET)
     public ResponseResult<Page<AccountModel>> page(@PathVariable("pageNow") int pageNow,
                                                    @RequestParam(value = "account", required = false) String account) {
@@ -41,11 +41,6 @@ public class AccountController {
         model.setAccount(account);
 //        此处非必须model，也可以单独条件写，此处为了演示model的写法所以用的model
         return service.page(pageNow, pageSize, model);
-    }
-
-    @RequestMapping(value = "/account/account", method = RequestMethod.GET)
-    public ResponseResult<AccountModel> findByAccount(@RequestParam(value = "account") String account) {
-        return service.findByAccount(account);
     }
 
     @RequiresAuthentication

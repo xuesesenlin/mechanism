@@ -95,17 +95,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
-        <!--&lt;!&ndash;缓存策略&ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>org.ehcache</groupId>-->
-        <!--<artifactId>ehcache</artifactId>-->
-        <!--<version>3.5.2</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash; JSR107 API &ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>javax.cache</groupId>-->
-        <!--<artifactId>cache-api</artifactId>-->
-        <!--</dependency>-->
+        <!-- ehcache 缓存 -->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+
         <!--oauth2-->
         <!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
         <!--<dependency>-->
