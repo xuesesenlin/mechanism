@@ -5,9 +5,6 @@ import org.ld.mechanism.admin.roleJurisdiction.model.RoleJurisdictionModel;
 import org.ld.mechanism.admin.roleJurisdiction.service.RoleJurisdictionService;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,7 +22,7 @@ public class RoleJurisdictionServiceImpl implements RoleJurisdictionService {
     @Autowired
     private RoleJurisdictionJpa jpa;
 
-    @CachePut(cacheNames = "role_Jurisdiction")
+    //    @CachePut(cacheNames = "role_Jurisdiction")
     @Transactional
     @Override
     public ResponseResult<RoleJurisdictionModel> save(RoleJurisdictionModel model) {
@@ -33,7 +30,7 @@ public class RoleJurisdictionServiceImpl implements RoleJurisdictionService {
         return new ResponseResult<>(true, "成功", null);
     }
 
-    @CacheEvict(cacheNames = "role_Jurisdiction")
+    //    @CacheEvict(cacheNames = "role_Jurisdiction")
     @Transactional
     @Override
     public ResponseResult<RoleJurisdictionModel> delete(String uuid) {
@@ -41,7 +38,7 @@ public class RoleJurisdictionServiceImpl implements RoleJurisdictionService {
         return new ResponseResult<>(true, "成功", null);
     }
 
-    @CachePut(cacheNames = "role_Jurisdiction")
+    //    @CachePut(cacheNames = "role_Jurisdiction")
     @Transactional
     @Override
     public ResponseResult<RoleJurisdictionModel> update(RoleJurisdictionModel model) {
@@ -54,7 +51,7 @@ public class RoleJurisdictionServiceImpl implements RoleJurisdictionService {
             return new ResponseResult<>(false, "未查询到数据", null);
     }
 
-    @Cacheable(cacheNames = "role_Jurisdiction")
+    //    @Cacheable(cacheNames = "role_Jurisdiction")
     @Override
     public ResponseResult<List<RoleJurisdictionModel>> findByRole(String role) {
         List<RoleJurisdictionModel> list = jpa.findByRole(role);
@@ -64,7 +61,7 @@ public class RoleJurisdictionServiceImpl implements RoleJurisdictionService {
             return new ResponseResult<>(false, "未查询到数据", null);
     }
 
-    @Cacheable(cacheNames = "role_Jurisdiction")
+    //    @Cacheable(cacheNames = "role_Jurisdiction")
     @Override
     public ResponseResult<List<RoleJurisdictionModel>> findByJurisdiction(String jurisdiction) {
         List<RoleJurisdictionModel> list = jpa.findByJurisdiction(jurisdiction);
@@ -74,7 +71,7 @@ public class RoleJurisdictionServiceImpl implements RoleJurisdictionService {
             return new ResponseResult<>(false, "未查询到数据", null);
     }
 
-    @CacheEvict(cacheNames = "role_Jurisdiction")
+    //    @CacheEvict(cacheNames = "role_Jurisdiction")
     @Transactional
     @Override
     public ResponseResult<RoleJurisdictionModel> deleteByJurisdiction(String jurisdiction) {
@@ -82,7 +79,7 @@ public class RoleJurisdictionServiceImpl implements RoleJurisdictionService {
         return new ResponseResult<>(true, "成功", null);
     }
 
-    @CacheEvict(cacheNames = "role_Jurisdiction")
+    //    @CacheEvict(cacheNames = "role_Jurisdiction")
     @Transactional
     @Override
     public ResponseResult<RoleJurisdictionModel> deleteByRole(String role) {

@@ -6,9 +6,6 @@ import org.ld.mechanism.admin.jurisdiction.model.JurisdictionModel;
 import org.ld.mechanism.admin.jurisdiction.service.JurisdictionService;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -36,7 +33,7 @@ public class JurisdictionServiceImpl implements JurisdictionService {
     @Autowired
     private JurisdictionJpa jpa;
 
-    @CachePut(cacheNames = "jurisdiction")
+    //    @CachePut(cacheNames = "jurisdiction")
     @Override
     public ResponseResult<JurisdictionModel> save(JurisdictionModel model) {
         List<JurisdictionModel> list = jpa.findByNameAndIdentification(model.getName(), model.getIdentification());
@@ -48,14 +45,14 @@ public class JurisdictionServiceImpl implements JurisdictionService {
         }
     }
 
-    @CacheEvict(cacheNames = "jurisdiction")
+    //    @CacheEvict(cacheNames = "jurisdiction")
     @Override
     public ResponseResult<JurisdictionModel> delete(String uuid) {
         jpa.deleteById(uuid);
         return new ResponseResult<>(true, "成功", null);
     }
 
-    @CachePut(cacheNames = "jurisdiction")
+    //    @CachePut(cacheNames = "jurisdiction")
     @Override
     public ResponseResult<JurisdictionModel> update(JurisdictionModel model) {
         List<JurisdictionModel> list = jpa.findByNameAndIdentification(model.getName(), model.getIdentification());
@@ -75,7 +72,7 @@ public class JurisdictionServiceImpl implements JurisdictionService {
         }
     }
 
-    @Cacheable(cacheNames = "jurisdiction")
+    //    @Cacheable(cacheNames = "jurisdiction")
     @Override
     public ResponseResult<JurisdictionModel> findByUuid(String uuid) {
         Optional<JurisdictionModel> one = jpa.findById(uuid);
@@ -85,7 +82,7 @@ public class JurisdictionServiceImpl implements JurisdictionService {
             return new ResponseResult<>(false, "未查询到记录", null);
     }
 
-    @Cacheable(cacheNames = "jurisdiction")
+    //    @Cacheable(cacheNames = "jurisdiction")
     @Override
     public ResponseResult<Page<JurisdictionModel>> page(int pageNow, int pageSize, JurisdictionModel model) {
         List<Sort.Order> orders = new ArrayList<>();

@@ -6,9 +6,6 @@ import org.ld.mechanism.admin.role.model.RoleModel;
 import org.ld.mechanism.admin.role.service.RoleService;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -37,7 +34,7 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleJpa jpa;
 
-    @CachePut(cacheNames = "role")
+    //    @CachePut(cacheNames = "role")
     @Transactional
     @Override
     public ResponseResult<RoleModel> save(RoleModel model) {
@@ -50,7 +47,7 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
-    @CacheEvict(cacheNames = "role")
+    //    @CacheEvict(cacheNames = "role")
     @Transactional
     @Override
     public ResponseResult<RoleModel> delete(String uuid) {
@@ -58,7 +55,7 @@ public class RoleServiceImpl implements RoleService {
         return new ResponseResult<>(true, "成功", null);
     }
 
-    @CachePut(cacheNames = "role")
+    //    @CachePut(cacheNames = "role")
     @Transactional
     @Override
     public ResponseResult<RoleModel> update(RoleModel model) {
@@ -78,7 +75,7 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
-    @Cacheable(cacheNames = "role")
+    //    @Cacheable(cacheNames = "role")
     @Override
     public ResponseResult<RoleModel> findByUuid(String uuid) {
         Optional<RoleModel> one = jpa.findById(uuid);
@@ -88,7 +85,7 @@ public class RoleServiceImpl implements RoleService {
             return new ResponseResult<>(false, "未查询到记录", null);
     }
 
-    @Cacheable(cacheNames = "role")
+    //    @Cacheable(cacheNames = "role")
     @Override
     public ResponseResult<Page<RoleModel>> page(int pageNow, int pageSize, RoleModel model) {
         List<Sort.Order> orders = new ArrayList<>();

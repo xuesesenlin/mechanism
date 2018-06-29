@@ -27,7 +27,7 @@ public class RegisterController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseResult<AccountModel> register(@Valid @RequestBody AccountModel model,
-                                                 BindingResult bindingResult) {
+                                                 BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors())
             return new ResponseResult<>(false, bindingResult.getFieldError().getDefaultMessage(), null);
 

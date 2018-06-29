@@ -5,9 +5,6 @@ import org.ld.mechanism.admin.roleAccount.model.RoleAccountModel;
 import org.ld.mechanism.admin.roleAccount.service.RoleAccountService;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,7 +22,7 @@ public class RoleAccountServiceImpl implements RoleAccountService {
     @Autowired
     private RoleAccountJpa jpa;
 
-    @CachePut(cacheNames = "role_account")
+    //    @CachePut(cacheNames = "role_account")
     @Transactional
     @Override
     public ResponseResult<RoleAccountModel> save(RoleAccountModel model) {
@@ -33,7 +30,7 @@ public class RoleAccountServiceImpl implements RoleAccountService {
         return new ResponseResult<>(true, "成功", null);
     }
 
-    @CacheEvict(cacheNames = "role_account")
+    //    @CacheEvict(cacheNames = "role_account")
     @Transactional
     @Override
     public ResponseResult<RoleAccountModel> delete(String uuid) {
@@ -41,7 +38,7 @@ public class RoleAccountServiceImpl implements RoleAccountService {
         return new ResponseResult<>(true, "成功", null);
     }
 
-    @CachePut(cacheNames = "role_account")
+    //    @CachePut(cacheNames = "role_account")
     @Transactional
     @Override
     public ResponseResult<RoleAccountModel> update(RoleAccountModel model) {
@@ -54,7 +51,7 @@ public class RoleAccountServiceImpl implements RoleAccountService {
             return new ResponseResult<>(false, "未查询到记录", null);
     }
 
-    @Cacheable(cacheNames = "role_account")
+    //    @Cacheable(cacheNames = "role_account")
     @Override
     public ResponseResult<List<RoleAccountModel>> findByAccount(String account) {
         List<RoleAccountModel> one = jpa.findByAccount(account);
@@ -64,7 +61,7 @@ public class RoleAccountServiceImpl implements RoleAccountService {
             return new ResponseResult<>(false, "为查询到记录", null);
     }
 
-    @Cacheable(cacheNames = "role_account")
+    //    @Cacheable(cacheNames = "role_account")
     @Override
     public ResponseResult<List<RoleAccountModel>> findByRole(String role) {
         List<RoleAccountModel> one = jpa.findByRole(role);
@@ -74,7 +71,7 @@ public class RoleAccountServiceImpl implements RoleAccountService {
             return new ResponseResult<>(false, "为查询到记录", null);
     }
 
-    @CacheEvict(cacheNames = "role_account")
+    //    @CacheEvict(cacheNames = "role_account")
     @Transactional
     @Override
     public ResponseResult<RoleAccountModel> deleteByAccount(String account) {
@@ -82,7 +79,7 @@ public class RoleAccountServiceImpl implements RoleAccountService {
         return new ResponseResult<>(true, "成功", null);
     }
 
-    @CacheEvict(cacheNames = "role_account")
+    //    @CacheEvict(cacheNames = "role_account")
     @Transactional
     @Override
     public ResponseResult<RoleAccountModel> deleteByRole(String role) {

@@ -6,8 +6,6 @@ import org.ld.mechanism.admin.account.model.AccountModel;
 import org.ld.mechanism.admin.account.service.AccountService;
 import org.ld.mechanism.util.responseResult.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,7 +36,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountJpa jpa;
 
     //    缓存更新
-    @CachePut(value = "account", key = "#model.uuid")
+//    @CachePut(value = "account", key = "#model.uuid")
     @Transactional
     @Override
     public ResponseResult<AccountModel> save(AccountModel model) {
@@ -51,7 +49,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     //    缓存删除
-    @CacheEvict(value = "account", key = "#uuid")
+//    @CacheEvict(value = "account", key = "#uuid")
     @Transactional
     @Override
     public ResponseResult<AccountModel> delete(String uuid) {
@@ -60,7 +58,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     //    缓存更新
-    @CachePut(value = "account", key = "#model.uuid")
+//    @CachePut(value = "account", key = "#model.uuid")
     @Transactional
     @Override
     public ResponseResult<AccountModel> update(AccountModel model) {
@@ -72,7 +70,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     //    缓存读取
-    @Cacheable(value = "account")
+//    @Cacheable(value = "account", key = "#account")
     @Override
     public ResponseResult<AccountModel> findByAccount(String account) {
         List<AccountModel> list = jpa.findByAccount(account);

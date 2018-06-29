@@ -2,9 +2,7 @@ package org.ld.mechanism.admin.account.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.cache.annotation.Cacheable;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -16,8 +14,6 @@ import java.io.Serializable;
  * @table
  * @remarks
  */
-@Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @Slf4j
 @Entity
 @Table(name = "account_table")
